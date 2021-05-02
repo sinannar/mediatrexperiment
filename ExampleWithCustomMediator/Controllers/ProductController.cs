@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CustomMediator;
+using ExampleWithCustomMediator.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,24 @@ namespace ExampleWithCustomMediator.Controllers
     [Route("api/[controller]/[action]")]
     public class ProductController : ControllerBase
     {
+        private IMediator _mediator { get; }
+
+        public ProductController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task<CreateProductResponseDto> GetProduct([FromBody] CreateProductRequestDto payload)
+        {
+            return await _mediator.Send(payload);
+        }
+
+        [HttpPost]
+        public async Task<GetCustomerResponseDto> CreateProduct([FromBody] GetCustomerRequestDto payload)
+        {
+            return await _mediator.Send(payload);
+        }
 
     }
 }

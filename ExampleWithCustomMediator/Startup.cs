@@ -1,3 +1,6 @@
+using CustomMediator;
+using ExampleWithCustomMediator.Dtos;
+using ExampleWithCustomMediator.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +29,9 @@ namespace ExampleWithCustomMediator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IRequestHandler<CreateProductRequestDto, CreateProductResponseDto>, CreateProductHandler>();
+            services.AddScoped<IRequestHandler<GetCustomerRequestDto, GetCustomerResponseDto>, GetProductHandler>();
+            services.AddScoped<IMediator, Mediator>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -37,6 +43,7 @@ namespace ExampleWithCustomMediator
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
