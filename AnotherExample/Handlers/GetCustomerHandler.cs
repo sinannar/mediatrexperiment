@@ -10,10 +10,10 @@ namespace AnotherExample.Handlers
 {
     public class GetCustomerHandler : IRequestHandler<GetCustomerQueryRequestDto, GetCustomerQueryResponseDto>
     {
-        public async Task<GetCustomerQueryResponseDto> Handle(GetCustomerQueryRequestDto request, CancellationToken cancellationToken)
+        public Task<GetCustomerQueryResponseDto> Handle(GetCustomerQueryRequestDto request, CancellationToken cancellationToken)
         {
             Console.WriteLine("GetCustomerHandler is being called");
-            return new GetCustomerQueryResponseDto();
+            return Task.FromResult(new GetCustomerQueryResponseDto());
         }
     }
 
