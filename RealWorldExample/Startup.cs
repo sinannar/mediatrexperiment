@@ -38,7 +38,8 @@ namespace RealWorldExample
                 options.UseSqlServer(Configuration["ConnectionStrings:MsSql"]);
             });
 
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            //services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository <>));
             services.AddScoped<ICustomerDxos, CustomerDxos>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddLogging();
