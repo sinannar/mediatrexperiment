@@ -23,13 +23,13 @@ namespace ExampleWithCustomMediator.Controllers
         [HttpPost]
         public async Task<CreateProductResponseDto> GetProduct([FromBody] CreateProductRequestDto payload)
         {
-            return await _mediator.Send(payload);
+            return await _mediator.Send<CreateProductRequestDto, CreateProductResponseDto>(payload);
         }
 
         [HttpPost]
         public async Task<GetCustomerResponseDto> CreateProduct([FromBody] GetCustomerRequestDto payload)
         {
-            return await _mediator.Send(payload);
+            return await _mediator.Send<GetCustomerRequestDto, GetCustomerResponseDto>(payload);
         }
 
     }

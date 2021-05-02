@@ -8,6 +8,6 @@ namespace CustomMediator
 {
     public interface IMediator
     {
-        Task<TResponse> Send<TResponse>(IRequest<TResponse> request);
+        public Task<TResponse> Send<TRequest, TResponse>(TRequest request) where TRequest : IRequest<TResponse>;
     }
 }

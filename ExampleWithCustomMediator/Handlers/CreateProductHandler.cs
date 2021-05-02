@@ -9,6 +9,11 @@ namespace ExampleWithCustomMediator.Handlers
 {
     public class CreateProductHandler : IRequestHandler<CreateProductRequestDto, CreateProductResponseDto>
     {
+        public CreateProductHandler()
+        {
+
+        }
+
         public Task<CreateProductResponseDto> Handle(CreateProductRequestDto request)
         {
             Console.WriteLine("CreateProductHandler is being called");
