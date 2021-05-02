@@ -21,13 +21,13 @@ namespace AnotherExample.Controllers
         }
 
         [HttpPost]
-        public async Task<GetCustomerQueryResponseDto> GetCustomer([FromBody] GetCustomerQueryRequestDto payload)
+        public async Task<GetCustomerResponseDto> GetCustomer([FromBody] GetCustomerRequestDto payload)
         {
             return await _mediator.Send(payload);
         }
 
         [HttpPost]
-        public async Task<CreateCustomerCommandResponseDto> CreateCustomer([FromBody] CreateCustomerCommandRequestDto payload)
+        public async Task<CreateCustomerResponseDto> CreateCustomer([FromBody] CreateCustomerRequestDto payload)
         {
             return await _mediator.Send(payload);
         }

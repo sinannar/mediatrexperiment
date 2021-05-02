@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AnotherExample.Dtos
 {
-    public class GetCustomerQueryResponseDto
+    public class CreateCustomerResponseDto
     {
         public Guid Id { get; set; } = Guid.NewGuid();
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnotherExample.Dtos
 {
-    public class GetCustomerQueryRequestDto : IRequest<GetCustomerQueryResponseDto>
+    public class GetCustomerRequestDto : IRequest<GetCustomerResponseDto>
     {
         public Guid Id { get; set; } = Guid.NewGuid();
     }

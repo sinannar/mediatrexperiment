@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace AnotherExample.Handlers
 {
-    public class GetCustomerHandler : IRequestHandler<GetCustomerQueryRequestDto, GetCustomerQueryResponseDto>
+    public class GetCustomerHandler : IRequestHandler<GetCustomerRequestDto, GetCustomerResponseDto>
     {
-        public Task<GetCustomerQueryResponseDto> Handle(GetCustomerQueryRequestDto request, CancellationToken cancellationToken)
+        public Task<GetCustomerResponseDto> Handle(GetCustomerRequestDto request, CancellationToken cancellationToken)
         {
             Console.WriteLine("GetCustomerHandler is being called");
-            return Task.FromResult(new GetCustomerQueryResponseDto());
+            return Task.FromResult(new GetCustomerResponseDto());
         }
     }
 
