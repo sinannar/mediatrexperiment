@@ -29,7 +29,7 @@ namespace AnotherExample
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
