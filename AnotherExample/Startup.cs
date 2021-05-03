@@ -29,12 +29,12 @@ namespace AnotherExample
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddMediatR(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnotherExample", Version = "v1" });
             });
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

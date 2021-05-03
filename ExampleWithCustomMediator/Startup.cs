@@ -29,9 +29,7 @@ namespace ExampleWithCustomMediator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<CreateProductRequestDto, CreateProductResponseDto>, CreateProductHandler>();
-            services.AddScoped<IRequestHandler<GetCustomerRequestDto, GetCustomerResponseDto>, GetProductHandler>();
-            services.AddMediator();
+            services.AddMediator(typeof(Startup));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
