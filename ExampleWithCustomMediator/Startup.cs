@@ -31,7 +31,7 @@ namespace ExampleWithCustomMediator
         {
             services.AddScoped<IRequestHandler<CreateProductRequestDto, CreateProductResponseDto>, CreateProductHandler>();
             services.AddScoped<IRequestHandler<GetCustomerRequestDto, GetCustomerResponseDto>, GetProductHandler>();
-            services.AddScoped<IMediator, Mediator>();
+            services.AddMediator();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
