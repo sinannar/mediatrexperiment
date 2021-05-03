@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CustomMediator
 {
     public static class ServiceCollectionExtensions
@@ -15,13 +11,14 @@ namespace CustomMediator
             var assemblies = types.Select(t => t.GetTypeInfo().Assembly).ToList();
             var distinctTypes = assemblies.SelectMany(a => a.GetTypes())
                 .Distinct()
-                .Where(t => t.GetInterfaces().Where(t2 => t2.IsGenericType && t2.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)).Count() > 0)
+                .Where(t => t.GetInterfaces().Where(t2 => t2.IsGenericType && t2.GetGenericTypeDefinition() == typeof(IRequestHandler<,>))
+                    .Count() > 0)
                 .ToList();
-
 
             foreach (var type in distinctTypes)
             {
-                var handlerInterface = type.GetInterfaces().Where(t2 => t2.IsGenericType && t2.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)).First();
+                var handlerInterface = type.GetInterfaces()
+                .Where(t2 => t2.IsGenericType && t2.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)).First();
                 services.AddScoped(handlerInterface, type);
             }
 
